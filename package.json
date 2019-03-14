@@ -1,0 +1,24 @@
+{
+  "name": "cucumber-browserstack-utils",
+  "version": "0.0.1",
+  "description": "Facilities running cucumber-js tests against browserstack selenium capabilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uc-riverside/cucumber-browserstack-utils.git"
+  },
+  "keywords": [
+    "ucriverside",
+    "cucumber",
+    "browserstack"
+  ],
+  "author": "Brandon Ayers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uc-riverside/cucumber-browserstack-utils/issues"
+  },
+  "homepage": "https://github.com/uc-riverside/cucumber-browserstack-utils#readme"
+}
