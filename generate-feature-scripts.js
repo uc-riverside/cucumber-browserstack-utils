@@ -22,7 +22,7 @@ exports.generateFeatureScripts = function() {
         return getDirFileList(dir, null, '.feature');
     };
 
-    let generateFeatureScripts = function (featureFile, testDevices) {
+    let generateFeatureScripts = function (featureFile, featureDir, testDevices) {
         let testMobile = featureFile.indexOf('.mobile.feature') >= 0;
         let testDesktop = featureFile.indexOf('.desktop.feature') >= 0;
 
@@ -56,16 +56,16 @@ exports.generateFeatureScripts = function() {
             let configFilePathParts = device.configFile.replace(/\\/g,"/").split('/');
             let configFileNoPath = configFilePathParts[configFilePathParts.length - 1];
             let configName = configFileNoPath;
-            let jsonFilePath = `out/${featureName}-${device.jsonFile}`;
+            let jsonFilePath = `out/${featureName}-${configName}.json`;
 
             featureScripts.push({
                 key: `test:${featureName}:${configName}`,
-                value: `cross-env CONFIG_FILE=${device.configFile} ./node_modules/.bin/cucumber-js --format json > ${jsonFilePath} ${featureFile}`
+                value: `cross-env CONFIG_FILE=${configFileNoPath} ./node_modules/.bin/cucumber-js --format json > ${jsonFilePath} ${featureDir}/${featureFileNoPath}`
             });
 
             featureScripts.push({
                 key: `metadata:${featureName}:${configName}`,
-                value: `node add-report-metadata --file=./${jsonFilePath} --browser=${device.browser} --browserVersion=${device.browserVersion} --os=${device.os} --osVersion=${device.osVersion} --device="${device.deviceDesc}"`
+                value: `node ./node_modules/@ucr/cucumber-browserstack-utils/add-report-metadata --file=${jsonFilePath} --browser=${device.browser} --browserVersion=${device.browserVersion} --os=${device.os} --osVersion=${device.osVersion} --device="${device.deviceDesc}"`
             });
         });
 
@@ -109,12 +109,14 @@ exports.generateFeatureScripts = function() {
         return testDevices;
     };
 
-    let featureFiles = getFeatureFileList(process.cwd() + '/features');
-    let testDevices = generateDeviceConfigurations(process.cwd() + '/conf');
+    let featureDir = 'features';
+    let confDir = 'conf';
+    let featureFiles = getFeatureFileList(process.cwd() + '/' + featureDir);
+    let testDevices = generateDeviceConfigurations(process.cwd() + '/' + confDir);
 
     let featureScripts = [];
     featureFiles.forEach((file) => {
-        generateFeatureScripts(file, testDevices).forEach((n) => {
+        generateFeatureScripts(file, featureDir, testDevices).forEach((n) => {
             if (!featureScripts.find(m => m.key === n.key)) {
                 featureScripts.push(n);
             }

@@ -1,6 +1,6 @@
 {
   "name": "@ucr/cucumber-browserstack-utils",
-  "version": "0.0.1-alpha7",
+  "version": "0.0.1-alpha8",
   "description": "Facilities running cucumber-js tests against browserstack selenium capabilities",
   "main": "cli.js",
   "scripts": {

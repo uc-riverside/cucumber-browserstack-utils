@@ -1,6 +1,6 @@
 let fs = require('fs');
-let argv = require('minimist')(process.argv.slice(2));
 let process = require('process');
+let argv = require('minimist')(process.argv.slice(2));
 
 console.log(`Adding report metadata to cucumber output file ${argv.file}`);
 
@@ -29,7 +29,8 @@ let metadata = {
     }
 };
 
-let filePath = process.cwd() + argv.file;
+let filePath = process.cwd() + '/' + argv.file;
+filePath = filePath.replace(/\\/g,"/");
 let file = require(filePath);
 file[0].metadata = metadata;
 
