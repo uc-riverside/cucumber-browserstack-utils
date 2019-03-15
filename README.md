@@ -1,0 +1,1 @@
+This is an npm package test and should not be downloaded

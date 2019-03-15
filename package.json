@@ -1,8 +1,8 @@
 {
-  "name": "cucumber-browserstack-utils",
-  "version": "0.0.1",
+  "name": "@ucr/cucumber-browserstack-utils",
+  "version": "0.0.1-alpha7",
   "description": "Facilities running cucumber-js tests against browserstack selenium capabilities",
-  "main": "index.js",
+  "main": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,14 +11,28 @@
     "url": "git+https://github.com/uc-riverside/cucumber-browserstack-utils.git"
   },
   "keywords": [
-    "ucriverside",
-    "cucumber",
-    "browserstack"
+    "ucriverside"
   ],
   "author": "Brandon Ayers",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/uc-riverside/cucumber-browserstack-utils/issues"
   },
-  "homepage": "https://github.com/uc-riverside/cucumber-browserstack-utils#readme"
+  "homepage": "https://github.com/uc-riverside/cucumber-browserstack-utils#readme",
+  "bin": {
+    "generate-feature-scripts": "./cli.js",
+    "add-report-metadata": "./add-report-metadata.js",
+    "generate-html-report": "./generate-html-report.js"
+  },
+  "dependencies": {
+    "browserstack": "^1.5.2",
+    "browserstack-local": "^1.0.0",
+    "cross-env": "^5.2.0",
+    "cucumber": "^5.1.0",
+    "cucumber-assert": "^1.0.4",
+    "minimist": "^1.2.0",
+    "multiple-cucumber-html-reporter": "^1.11.6",
+    "npm-run-all": "^4.1.5",
+    "selenium-webdriver": "^3.6.0"
+  }
 }
