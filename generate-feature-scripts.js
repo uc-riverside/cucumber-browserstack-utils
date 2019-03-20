@@ -110,7 +110,7 @@ exports.generateFeatureScripts = function() {
     };
 
     let featureDir = 'features';
-    let confDir = 'conf';
+    let confDir = 'conf/devices';
     let featureFiles = getFeatureFileList(process.cwd() + '/' + featureDir);
     let testDevices = generateDeviceConfigurations(process.cwd() + '/' + confDir);
 
