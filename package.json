@@ -1,7 +1,7 @@
 {
   "name": "@ucr/cucumber-browserstack-utils",
-  "version": "0.0.1-alpha8",
-  "description": "Facilities running cucumber-js tests against browserstack selenium capabilities",
+  "version": "1.0.0",
+  "description": "Facilitates running cucumber-js tests against browserstack selenium capabilities",
   "main": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
