@@ -60,7 +60,7 @@ exports.generateFeatureScripts = function() {
 
             featureScripts.push({
                 key: `test:${featureName}:${configName}`,
-                value: `cross-env CONFIG_FILE=${configFileNoPath} ./node_modules/.bin/cucumber-js --format json > ${jsonFilePath} ${featureDir}/${featureFileNoPath}`
+                value: `cross-env CONFIG_FILE=${configFileNoPath} ./node_modules/.bin/cucumber-js --require-module ts-node/register --require features/step-definitions/**/*.ts --format json > ${jsonFilePath} ${featureDir}/${featureFileNoPath}`
             });
 
             featureScripts.push({
